@@ -3,6 +3,8 @@ package org.firstinspires.ftc.teamcode.OpMode_pr;
 import static java.lang.Math.abs;
 
 public class MotorDriver {
+
+    // creating instance variable that we going to need
     private MotorDc motor;
     double forwardleft;
     double backwarleft;
@@ -12,10 +14,13 @@ public class MotorDriver {
     double dinomenator;
 
 
+
+    // Creating a Constructure
     public MotorDriver(MotorDc motor){
         this.motor = motor;
     }
 
+    // Creating a function (helper funtion) that gonna help as bc it calculate the speed gonna use by a mathematical formula
     public void set_motor_mouvement(double x, double y, double rx){
         forwardleft = x + y + rx;
         forwardright = x - y + rx;
@@ -26,6 +31,7 @@ public class MotorDriver {
 
     }
 
+    // Move The motor using the function below
     public void move_motor(){
 
         motor.frontleft.setPower((int)forwardleft / (int)dinomenator);

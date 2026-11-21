@@ -8,6 +8,8 @@ import org.firstinspires.ftc.teamcode.DcMotor;
 
 public class MotorDc {
 
+
+    // Creating instance variable
     public DcMotor frontleft;
     public DcMotor frontright;
     public DcMotor backright;
@@ -28,6 +30,7 @@ public class MotorDc {
         gate = true;
     }
 
+    // Stop The motor
     public void stop_motor(){
         frontleft.setPower(0);
         frontright.setPower(0);
@@ -35,8 +38,10 @@ public class MotorDc {
         backright.setPower(0);
 
     }
-    public boolean get_pos(AngleUnit angle){
-        return angle > 180 && angle < 430;
+    public boolean get_pos(String angle_unit, double angle){
+        if (angle_unit == "Degrese")
+            return angle > 180 && angle < 430;
+        return false;
     }
 
 
