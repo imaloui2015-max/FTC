@@ -19,7 +19,7 @@ public class Autonomous_main extends OpMode {
     @Override
     public void loop(){
         april_tag.detection();
-        AprilTagDetection id64 = april_tag.getById(64);
+        AprilTagDetection id64 = april_tag.getById(12);
 
     }
 

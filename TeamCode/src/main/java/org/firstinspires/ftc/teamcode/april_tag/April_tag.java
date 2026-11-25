@@ -29,11 +29,14 @@ public class April_tag {
     private Telemetry telemetry;
 
 
-    // ==== initialise hardware ====
+    // ========================== initialise hardware ===========================
     public April_tag(HardwareMap hardwareMap, Telemetry telemetry){
         this.telemetry = telemetry;
         // ==== This our april tag so we're going to chose and update whatever we wnt ====
         apriltag = new AprilTagProcessor.Builder()
+                .setTagFamily(AprilTagProcessor.TagFamily.TAG_36h11)
+                .setLensIntrinsics(new double[]{fx, fy, cx, cy})
+                .setDecimation(2)
                 .setDrawTagID(true)
                 .setDrawTagOutline(true)
                 .setDrawAxes(true)
@@ -45,7 +48,7 @@ public class April_tag {
         // ==== Build visionportal (manage the camera) ====
         VisionPortal.Builder builder = new VisionPortal.Builder();
         builder.setCamera(hardwareMap.get(WebcamName.class, "webcam"));
-        builder.setCameraResolution(new Size(640 , 480));
+        builder.setCameraResolution(new Size(640 , 480)); // That The best camera resolution bc we don't want to face problems later on
         builder.addProcessor(apriltag); // ==== Then when were finished managing camera we should pass it april tag as a parameter ofc ====
         // =============== So as a conclusion we initialise april tag to pass it to the visionportal ===============
 
